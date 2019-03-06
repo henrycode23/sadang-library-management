@@ -1,70 +1,61 @@
 <?php
 
 /**
- * The plugin bootstrap file
+ * Bootstrap plugin file 
+ *  - the first piece of code that runs when a plugin starts, and is responsible for loading the rest of the plugin files
+ * 
+ * This file consists of define constants, activate function, deactivate function,
+ * other dependencies and classes that are being called and accessed in this file.
  *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
+ * @package           Sadang_Library_Management
  * @link              https://jsadang.wordpress.com/
  * @since             1.0.0
- * @package           Sadang Library_Management_System
  *
  * @wordpress-plugin
  * Plugin Name:       Sadang Library Management System
  * Plugin URI:        https://jsadang.wordpress.com
- * Description:       Library Management System plugin gives you the flexibility to manage students, staffs, books etc. By the help of which you can issue book to users. All the feature details you can find at Plugin main dashboard.
- * Version:           1.0.0
+ * Description:       Manages library books, book categorization, borrow or return book and students or staffs recording.
  * Author:            Jack Henry Sadang
  * Author URI:        https://jsadang.wordpress.com/
+ * Version:           1.0.0
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       library-management-system
+ * Text Domain:       sadang-library-management
  * Domain Path:       /languages
  */
-// If this file is called directly, abort.
+
+
 if (!defined('ABSPATH')) {
     die;
 }
 
-/**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
- */
+// require plugin_dir_path(__FILE__) . 'config.php';
+define('PLUGIN_VERSION', '1.0.0');
+define('PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
+define('PLUGIN_URL', plugin_dir_url(__FILE__));
+define('PLUGIN_PREFIX', "wp-sadang");
+define('PLUGIN_BASEPATH', plugin_basename(__FILE__));
+define('PLUGIN_BOOK_LATE_FINE', get_option("late_fine"));
+define('PLUGIN_BOOK_CURRENCY', get_option("currency_code"));
 
-define('OWT_LIBRARY_PLUGIN_VERSION', '1.0.0');
-define('OWT_LIBRARY_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
-define('OWT_LIBRARY_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('OWT_LIBRARY_PLUGIN_PREFIX', "wpowt-pl");
-define('OWT_LIBRARY_PLUGIN_BASEPATH', plugin_basename(__FILE__));
-define('OWT_LIBRARY_PLUGIN_BOOK_LATE_FINE', get_option("owt_lib_book_late_fine"));
-define('OWT_LIBRARY_PLUGIN_BOOK_CURRENCY', get_option("owt_lib_currency_code"));
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-library-management-system-activator.php
- */
-function activate_library_management_system() {
-    require_once plugin_dir_path(__FILE__) . 'includes/class-library-management-system-activator.php';
-    $table_activator = new Library_Management_System_Activator();
-    $table_activator->owt_library_tables_activate();
+// Runs when plugin activates.
+function activate_library() {
+    require_once plugin_dir_path(__FILE__) . 'includes/Library-activator.php';
+    $table_activator = new Library_Activator();
+    $table_activator->library_tables_activate();
 }
 
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-library-management-system-deactivator.php
- */
-function deactivate_library_management_system() {
-    require_once plugin_dir_path(__FILE__) . 'includes/class-library-management-system-deactivator.php';
-    $table_deactivator = new Library_Management_System_Deactivator();
+// Runs when plugin deactivates.
+function deactivate_library() {
+    require_once plugin_dir_path(__FILE__) . 'includes/class-library-deactivator.php';
+    $table_deactivator = new Library_Deactivator();
     $table_deactivator->deactivate();
 }
 
-register_activation_hook(__FILE__, 'activate_library_management_system');
-register_deactivation_hook(__FILE__, 'deactivate_library_management_system');
+// Calling functions
+register_activation_hook(__FILE__, 'activate_library');
+register_deactivation_hook(__FILE__, 'deactivate_library');
 
 /**
  * The core plugin class that is used to define internationalization,
