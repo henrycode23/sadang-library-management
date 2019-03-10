@@ -1,23 +1,33 @@
 <?php
+
 /**
- * Core plugin file 
- * 
- * This file consists of processes such as 
- * load_dependencies, set_locale, define_admin_hooks, define_public_hooks,
- * library_default_plugin_values, get_plugin_name, get_loader, get_version
+ * The file that defines the core plugin class
+ *
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- *
  * @link       https://jsadang.wordpress.com
  * @since      1.0.0
- * @package    Sadang_Library_Management
- * @subpackage Sadang_Library_Management/includes
- * @author     Jack Henry Sadang <jackhenrysadang22@gmail.com>
- * 
+ *
+ * @package    Library_Management_System
+ * @subpackage Library_Management_System/includes
  */
 
-class Library_Core {
+/**
+ * The core plugin class.
+ *
+ * This is used to define internationalization, admin-specific hooks, and
+ * public-facing site hooks.
+ *
+ * Also maintains the unique identifier of this plugin as well as the current
+ * version of the plugin.
+ *
+ * @since      1.0.0
+ * @package    Library_Management_System
+ * @subpackage Library_Management_System/includes
+ * @author     Jack Henry Sadang <jackhenrysadang22@gmail.com>
+ */
+class Library_Management_System {
 
     /**
      * The loader that's responsible for maintaining and registering all hooks that power
@@ -25,7 +35,7 @@ class Library_Core {
      *
      * @since    1.0.0
      * @access   protected
-     * @var      Library_Loader    $loader    Maintains and registers all hooks for the plugin.
+     * @var      Library_Management_System_Loader    $loader    Maintains and registers all hooks for the plugin.
      */
     protected $loader;
 
@@ -62,7 +72,7 @@ class Library_Core {
         } else {
             $this->version = '1.0.0';
         }
-        $this->plugin_name = 'sadang-library-management';
+        $this->plugin_name = 'library-management-system';
 
         $this->load_dependencies();
         $this->set_locale();
@@ -75,10 +85,10 @@ class Library_Core {
      *
      * Include the following files that make up the plugin:
      *
-     * - Library_Loader. Orchestrates the hooks of the plugin.
-     * - Library_i18n. Defines internationalization functionality.
-     * - Library_Admin. Defines all hooks for the admin area.
-     * - Library_Public. Defines all hooks for the public side of the site.
+     * - Library_Management_System_Loader. Orchestrates the hooks of the plugin.
+     * - Library_Management_System_i18n. Defines internationalization functionality.
+     * - Library_Management_System_Admin. Defines all hooks for the admin area.
+     * - Library_Management_System_Public. Defines all hooks for the public side of the site.
      *
      * Create an instance of the loader which will be used to register the hooks
      * with WordPress.
@@ -92,32 +102,32 @@ class Library_Core {
          * The class responsible for orchestrating the actions and filters of the
          * core plugin.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/Library-loader.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-library-management-system-loader.php';
 
         /**
          * The class responsible for defining internationalization functionality
          * of the plugin.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/Library-i18n.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-library-management-system-i18n.php';
 
         /**
          * The class responsible for defining all actions that occur in the admin area.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/Library-admin.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-library-management-system-admin.php';
 
         /**
          * The class responsible for defining all actions that occur in the public-facing
          * side of the site.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'public/Library-public.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-library-management-system-public.php';
 
-        $this->loader = new Library_Loader();
+        $this->loader = new Library_Management_System_Loader();
     }
 
     /**
      * Define the locale for this plugin for internationalization.
      *
-     * Uses the Library_i18n class in order to set the domain and to register the hook
+     * Uses the Library_Management_System_i18n class in order to set the domain and to register the hook
      * with WordPress.
      *
      * @since    1.0.0
@@ -125,7 +135,7 @@ class Library_Core {
      */
     private function set_locale() {
 
-        $plugin_i18n = new Library_i18n();
+        $plugin_i18n = new Library_Management_System_i18n();
 
         $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
     }
@@ -139,14 +149,14 @@ class Library_Core {
      */
     private function define_admin_hooks() {
 
-        $plugin_admin = new Library_Admin($this->get_plugin_name(), $this->get_version());
+        $plugin_admin = new Library_Management_System_Admin($this->get_plugin_name(), $this->get_version());
 
-        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'library_enqueue_styles');
-        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'library_enqueue_scripts');
-        $this->loader->add_action('admin_menu', $plugin_admin, 'library_admin_menus');
-        $this->loader->add_action('admin_notices', $plugin_admin, 'library_free_version_rules');
-        $this->loader->add_action('wp_ajax_lib_handler', $plugin_admin, 'library_ajax_handler');
-        $this->loader->add_filter("plugin_action_links_" . PLUGIN_BASEPATH, $plugin_admin, 'library_settings_link');
+        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'owt_library_enqueue_styles');
+        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'owt_library_enqueue_scripts');
+        $this->loader->add_action('admin_menu', $plugin_admin, 'owt_library_admin_menus');
+        $this->loader->add_action('admin_notices', $plugin_admin, 'owt_library_free_version_rules');
+        $this->loader->add_action('wp_ajax_owt_lib_handler', $plugin_admin, 'owt_library_ajax_handler');
+        $this->loader->add_filter("plugin_action_links_" . OWT_LIBRARY_PLUGIN_BASEPATH, $plugin_admin, 'wpowt_library_settings_link');
     }
 
     /**
@@ -158,7 +168,7 @@ class Library_Core {
      */
     private function define_public_hooks() {
 
-        $plugin_public = new Library_Public($this->get_plugin_name(), $this->get_version());
+        $plugin_public = new Library_Management_System_Public($this->get_plugin_name(), $this->get_version());
 
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
@@ -171,25 +181,25 @@ class Library_Core {
      */
     public function run() {
         $this->loader->run();
-        self::library_default_plugin_values();
+        self::owt_library_default_plugin_values();
     }
 
     /*
      * plugin custom settings
      */
 
-    public function library_default_plugin_values() {
-        $country_code = get_option('lib_country_setup');
+    public function owt_library_default_plugin_values() {
+        $country_code = get_option('owt_lib_country_setup');
         if (empty($country_code)) {
-            update_option("lib_country_setup", 173); // default for Philippines
+            update_option("owt_lib_country_setup", 173); // default for Philippines
         }
-        $late_fine = get_option('lib_book_late_fine'); 
+        $late_fine = get_option('owt_lib_book_late_fine'); 
         if (empty($late_fine)) {
-            update_option("lib_book_late_fine", 10); // default late fine
+            update_option("owt_lib_book_late_fine", 50); // default late fine
         }
-        $currency_code = get_option('lib_currency_code');
+        $currency_code = get_option('owt_lib_currency_code');
         if (empty($currency_code)) {
-            update_option("lib_currency_code", "PH"); // default currency code
+            update_option("owt_lib_currency_code", "PH"); // default currency code
         }
     }
 
@@ -208,7 +218,7 @@ class Library_Core {
      * The reference to the class that orchestrates the hooks with the plugin.
      *
      * @since     1.0.0
-     * @return    Library_Loader    Orchestrates the hooks of the plugin.
+     * @return    Library_Management_System_Loader    Orchestrates the hooks of the plugin.
      */
     public function get_loader() {
         return $this->loader;

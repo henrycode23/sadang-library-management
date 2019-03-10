@@ -5,8 +5,8 @@
  * @link       https://jsadang.wordpress.com
  * @since      1.0.0
  *
- * @package    Management_System
- * @subpackage Management_System/admin
+ * @package    Library_Management_System
+ * @subpackage Library_Management_System/admin
  */
 
 /**
@@ -15,11 +15,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Management_System
- * @subpackage Management_System/admin
+ * @package    Library_Management_System
+ * @subpackage Library_Management_System/admin
  * @author     Jack Henry Sadang <jackhenrysadang22@gmail.com>
  */
-class Admin {
+class Library_Management_System_Admin {
 
     /**
      * The ID of this plugin.
@@ -52,8 +52,8 @@ class Admin {
         $this->plugin_name = $plugin_name;
         $this->version = $version;
 
-        require_once PLUGIN_DIR_PATH . 'includes/Library-activator.php';
-        $this->table_activator = new Activator();
+        require_once OWT_LIBRARY_PLUGIN_DIR_PATH . 'includes/class-library-management-system-activator.php';
+        $this->table_activator = new Library_Management_System_Activator();
     }
 
     /**
@@ -61,36 +61,36 @@ class Admin {
      *
      * @since    1.0.0
      */
-    public function enqueue_styles() {
+    public function owt_library_enqueue_styles() {
 
         $page = isset($_REQUEST['page']) ? trim($_REQUEST['page']) : "";
 
         $plugin_valid_pages = array(
-            "lib-manage",
-            "lib-manage-students",
-            "lib-manage-staffs",
-            "lib-manage-books",
-            "lib-book-issue-list",
-            "lib-return-book-list",
-            "lib-manage-settings",
-            "lib-create-student",
-            "lib-create-staff",
-            "lib-create-book",
-            "lib-create-book-issue",
-            "lib-create-book-return",
-            "lib-staff-book-return",
-            "lib-staff-book-issue"
+            "owt-lib-manage",
+            "owt-lib-manage-students",
+            "owt-lib-manage-staffs",
+            "owt-lib-manage-books",
+            "owt-lib-book-issue-list",
+            "owt-lib-return-book-list",
+            "owt-lib-manage-settings",
+            "owt-lib-create-student",
+            "owt-lib-create-staff",
+            "owt-lib-create-book",
+            "owt-lib-create-book-issue",
+            "owt-lib-create-book-return",
+            "owt-lib-staff-book-return",
+            "owt-lib-staff-book-issue"
         );
         if (in_array($page, $plugin_valid_pages)) {
             //stylesheet files
-            wp_enqueue_style("lib-bootstrap", PLUGIN_URL . 'assets/css/bootstrap.min.css', array(), $this->version, 'all');
-            wp_enqueue_style("lib-font-icons", PLUGIN_URL . 'assets/fonts/material-icons.css', array(), $this->version, 'all');
-            wp_enqueue_style("lib-materialsdesignicons", PLUGIN_URL . 'assets/css/materialdesignicons.css', array(), $this->version, 'all');
-            wp_enqueue_style("lib-datatable", PLUGIN_URL . 'assets/css/jquery.dataTables.min.css', array(), $this->version, 'all');
-            wp_enqueue_style("lib-sweetalert", PLUGIN_URL . 'assets/css/sweetalert.css', array(), $this->version, 'all');
-            wp_enqueue_style("lib-toastr", PLUGIN_URL . 'assets/css/toastr.min.css', array(), $this->version, 'all');
-            wp_enqueue_style("custom-css", PLUGIN_URL . 'admin/css/library-management-system-admin.css', array(), $this->version, 'all');
-            wp_enqueue_style("lib-global", PLUGIN_URL . 'assets/css/lib-global.css', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-bootstrap", OWT_LIBRARY_PLUGIN_URL . 'assets/css/bootstrap.min.css', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-font-icons", OWT_LIBRARY_PLUGIN_URL . 'assets/fonts/material-icons.css', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-materialsdesignicons", OWT_LIBRARY_PLUGIN_URL . 'assets/css/materialdesignicons.css', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-datatable", OWT_LIBRARY_PLUGIN_URL . 'assets/css/jquery.dataTables.min.css', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-sweetalert", OWT_LIBRARY_PLUGIN_URL . 'assets/css/sweetalert.css', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-toastr", OWT_LIBRARY_PLUGIN_URL . 'assets/css/toastr.min.css', array(), $this->version, 'all');
+            wp_enqueue_style("owt-custom-css", OWT_LIBRARY_PLUGIN_URL . 'admin/css/library-management-system-admin.css', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-global", OWT_LIBRARY_PLUGIN_URL . 'assets/css/owt-lib-global.css', array(), $this->version, 'all');
         }
     }
 
@@ -99,66 +99,66 @@ class Admin {
      *
      * @since    1.0.0
      */
-    public function enqueue_scripts() {
+    public function owt_library_enqueue_scripts() {
         $page = isset($_REQUEST['page']) ? trim($_REQUEST['page']) : "";
 
         $plugin_valid_pages = array(
-            "lib-manage",
-            "lib-manage-students",
-            "lib-manage-staffs",
-            "lib-manage-books",
-            "lib-book-issue-list",
-            "lib-return-book-list",
-            "lib-manage-settings",
-            "lib-create-student",
-            "lib-create-staff",
-            "lib-create-book",
-            "lib-create-book-issue",
-            "lib-create-book-return",
-            "lib-staff-book-return",
-            "lib-staff-book-issue"
+            "owt-lib-manage",
+            "owt-lib-manage-students",
+            "owt-lib-manage-staffs",
+            "owt-lib-manage-books",
+            "owt-lib-book-issue-list",
+            "owt-lib-return-book-list",
+            "owt-lib-manage-settings",
+            "owt-lib-create-student",
+            "owt-lib-create-staff",
+            "owt-lib-create-book",
+            "owt-lib-create-book-issue",
+            "owt-lib-create-book-return",
+            "owt-lib-staff-book-return",
+            "owt-lib-staff-book-issue"
         );
         if (in_array($page, $plugin_valid_pages)) {
             // javascript files
-            wp_enqueue_script("bootstrap", PLUGIN_URL . 'assets/js/bootstrap.min.js', array('jquery'), $this->version, true);
-            wp_enqueue_script("datatable", PLUGIN_URL . 'assets/js/jquery.dataTables.min.js', array('jquery'), $this->version, true);
-            wp_enqueue_script("validate", PLUGIN_URL . 'assets/js/jquery.validate.min.js', array('jquery'), $this->version, true);
-            wp_enqueue_script("sweatalert", PLUGIN_URL . 'assets/js/sweetalert.min.js', array('jquery'), $this->version, true);
-            wp_enqueue_script("toastr", PLUGIN_URL . 'assets/js/toastr.min.js', array('jquery'), $this->version, true);
-            wp_enqueue_script($this->plugin_name, PLUGIN_URL . 'admin/js/library-management-system-admin.js', array('jquery'), $this->version, true);
-            wp_localize_script($this->plugin_name, "lib", array(
+            wp_enqueue_script("bootstrap", OWT_LIBRARY_PLUGIN_URL . 'assets/js/bootstrap.min.js', array('jquery'), $this->version, true);
+            wp_enqueue_script("datatable", OWT_LIBRARY_PLUGIN_URL . 'assets/js/jquery.dataTables.min.js', array('jquery'), $this->version, true);
+            wp_enqueue_script("validate", OWT_LIBRARY_PLUGIN_URL . 'assets/js/jquery.validate.min.js', array('jquery'), $this->version, true);
+            wp_enqueue_script("sweatalert", OWT_LIBRARY_PLUGIN_URL . 'assets/js/sweetalert.min.js', array('jquery'), $this->version, true);
+            wp_enqueue_script("toastr", OWT_LIBRARY_PLUGIN_URL . 'assets/js/toastr.min.js', array('jquery'), $this->version, true);
+            wp_enqueue_script($this->plugin_name, OWT_LIBRARY_PLUGIN_URL . 'admin/js/library-management-system-admin.js', array('jquery'), $this->version, true);
+            wp_localize_script($this->plugin_name, "owt_lib", array(
                 "ajaxurl" => admin_url("admin-ajax.php"),
-                "lib_prefix" => PLUGIN_PREFIX
+                "owt_lib_prefix" => OWT_LIBRARY_PLUGIN_PREFIX
             ));
         }
     }
 
-    public function admin_menus() {
+    public function owt_library_admin_menus() {
 
-        add_menu_page("Library Management", "Library Management", "manage_options", "lib-manage", array($this, "management_dashbaord"), "dashicons-book-alt", 58);
-        add_submenu_page("lib-manage", "Dashboard", "Dashboard", "manage_options", "lib-manage", array($this, "management_dashbaord"));
-        add_submenu_page("lib-manage", "Students", "Students", "manage_options", "lib-manage-students", array($this, "students_management"));
-        add_submenu_page("lib-manage", "Staffs", "Staffs", "manage_options", "lib-manage-staffs", array($this, "staffs_management"));
-        add_submenu_page("lib-manage", "Books", "Books", "manage_options", "lib-manage-books", array($this, "books_management"));
-        add_submenu_page("lib-manage", "Manage Book Issue", "Manage Book Issue", "manage_options", "lib-book-issue-list", array($this, "book_issue_list"));
-        add_submenu_page("lib-manage", "Manage Book Return", "Manage Book Return", "manage_options", "lib-return-book-list", array($this, "return_book_list"));
-        add_submenu_page("lib-manage", "Settings Panel", "Settings Panel", "manage_options", "lib-manage-settings", array($this, "settings_panel"));
-        add_submenu_page("lib-manage", "", "", "manage_options", "lib-create-book", array($this, "create_book"));
-        add_submenu_page("lib-manage", "", "", "manage_options", "lib-create-staff", array($this, "create_staff"));
-        add_submenu_page("lib-manage", "", "", "manage_options", "lib-create-student", array($this, "create_student"));
-        add_submenu_page("lib-manage", "", "", "manage_options", "lib-create-book-issue", array($this, "create_new_issue"));
-        add_submenu_page("lib-manage", "", "", "manage_options", "lib-create-book-return", array($this, "create_new_return"));
-        add_submenu_page("lib-manage", "", "", "manage_options", "lib-staff-book-issue", array($this, "staff_book_issue"));
-        add_submenu_page("lib-manage", "", "", "manage_options", "lib-staff-book-return", array($this, "staff_book_return"));
+        add_menu_page("Library Management", "Library Management", "manage_options", "owt-lib-manage", array($this, "owt_library_management_dashbaord"), "dashicons-book-alt", 58);
+        add_submenu_page("owt-lib-manage", "Dashboard", "Dashboard", "manage_options", "owt-lib-manage", array($this, "owt_library_management_dashbaord"));
+        add_submenu_page("owt-lib-manage", "Students", "Students", "manage_options", "owt-lib-manage-students", array($this, "owt_library_students_management"));
+        add_submenu_page("owt-lib-manage", "Staffs", "Staffs", "manage_options", "owt-lib-manage-staffs", array($this, "owt_library_staffs_management"));
+        add_submenu_page("owt-lib-manage", "Books", "Books", "manage_options", "owt-lib-manage-books", array($this, "owt_library_books_management"));
+        add_submenu_page("owt-lib-manage", "Manage Book Issue", "Manage Book Issue", "manage_options", "owt-lib-book-issue-list", array($this, "owt_library_book_issue_list"));
+        add_submenu_page("owt-lib-manage", "Manage Book Return", "Manage Book Return", "manage_options", "owt-lib-return-book-list", array($this, "owt_library_return_book_list"));
+        add_submenu_page("owt-lib-manage", "Settings Panel", "Settings Panel", "manage_options", "owt-lib-manage-settings", array($this, "owt_library_settings_panel"));
+        add_submenu_page("owt-lib-manage", "", "", "manage_options", "owt-lib-create-book", array($this, "owt_library_create_book"));
+        add_submenu_page("owt-lib-manage", "", "", "manage_options", "owt-lib-create-staff", array($this, "owt_library_create_staff"));
+        add_submenu_page("owt-lib-manage", "", "", "manage_options", "owt-lib-create-student", array($this, "owt_library_create_student"));
+        add_submenu_page("owt-lib-manage", "", "", "manage_options", "owt-lib-create-book-issue", array($this, "owt_library_create_new_issue"));
+        add_submenu_page("owt-lib-manage", "", "", "manage_options", "owt-lib-create-book-return", array($this, "owt_library_create_new_return"));
+        add_submenu_page("owt-lib-manage", "", "", "manage_options", "owt-lib-staff-book-issue", array($this, "owt_library_staff_book_issue"));
+        add_submenu_page("owt-lib-manage", "", "", "manage_options", "owt-lib-staff-book-return", array($this, "owt_library_staff_book_return"));
     }
 
-    public function staff_book_return() {
+    public function owt_library_staff_book_return() {
 
         global $wpdb;
 
         $staff_book_returns = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT rt.id as return_id,issue.created_at as issued_date, staff.staff_id, staff.name, staff.email, staff.phone_no, book.name as book_name, category.name as cat_name ,rt.has_fine_status,rt.created_at as returned_date from " . $this->table_activator->tbl_book_return() . " rt INNER JOIN " . $this->table_activator->tbl_book_issue() . " issue ON rt.book_issue_id = issue.issue_id INNER JOIN " . $this->table_activator->tbl_user_type() . " utype ON issue.user_type_id = utype.id INNER JOIN " . $this->table_activator->tbl_teachers_staff() . " staff ON staff.id = issue.user_id INNER JOIN " . $this->table_activator->tbl_books() . " book ON book.id = issue.book_id INNER JOIN " . $this->table_activator->tbl_category() . " category ON category.id = book.category_id WHERE utype.type != %s AND staff.status = %d", 'student', 1
+                        "SELECT rt.id as return_id,issue.created_at as issued_date, staff.staff_id, staff.name, staff.email, staff.phone_no, book.name as book_name, category.name as cat_name ,rt.has_fine_status,rt.created_at as returned_date from " . $this->table_activator->owt_library_tbl_book_return() . " rt INNER JOIN " . $this->table_activator->owt_library_tbl_book_issue() . " issue ON rt.book_issue_id = issue.issue_id INNER JOIN " . $this->table_activator->owt_library_tbl_user_type() . " utype ON issue.user_type_id = utype.id INNER JOIN " . $this->table_activator->owt_library_tbl_teachers_staff() . " staff ON staff.id = issue.user_id INNER JOIN " . $this->table_activator->owt_library_tbl_books() . " book ON book.id = issue.book_id INNER JOIN " . $this->table_activator->owt_library_tbl_category() . " category ON category.id = book.category_id WHERE utype.type != %s AND staff.status = %d", 'student', 1
                 )
         );
 
@@ -181,15 +181,15 @@ class Admin {
                 );
             }
         }
-        $this->include_template_file("report/lms-staff-book-return-list", array("return_books" => $student_book_returns, "book_returns" => $book_returns));
+        $this->owt_library_include_template_file("report/owt-lms-staff-book-return-list", array("return_books" => $student_book_returns, "book_returns" => $book_returns));
     }
 
-    public function staff_book_issue() {
+    public function owt_library_staff_book_issue() {
         global $wpdb;
 
         $book_issues_list = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_book_issue() . " WHERE status = %d ORDER BY id desc", 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_book_issue() . " WHERE status = %d ORDER BY id desc", 1
                 )
         );
         $issue_list = array();
@@ -197,21 +197,21 @@ class Admin {
 
             foreach ($book_issues_list as $index => $issue) {
 
-                $utype = $this->get_usertype_info($issue->user_type_id);
+                $utype = $this->owt_library_get_usertype_info($issue->user_type_id);
                 $name = '';
                 $email = '';
                 $u_id = '';
                 if ($utype != "student") {
-                    $staff_info = $this->get_staff_info($issue->user_id);
+                    $staff_info = $this->owt_library_get_staff_info($issue->user_id);
                     $name = $staff_info->name;
                     $email = $staff_info->email;
                     $u_id = $staff_info->staff_id;
 
                     $issue_list[] = array(
                         "issue_id" => $issue->issue_id,
-                        "category" => $this->get_category_info($issue->category_id),
-                        "book" => $this->get_book_info($issue->book_id),
-                        "user_type" => $this->get_usertype_info($issue->user_type_id),
+                        "category" => $this->owt_library_get_category_info($issue->category_id),
+                        "book" => $this->owt_library_get_book_info($issue->book_id),
+                        "user_type" => $this->owt_library_get_usertype_info($issue->user_type_id),
                         "name" => $name,
                         "email" => $email,
                         "created" => $issue->created_at,
@@ -222,59 +222,59 @@ class Admin {
             }
         }
 
-        $this->include_template_file("report/lms-staff-book-issue-list", array("issues" => $issue_list));
+        $this->owt_library_include_template_file("report/owt-lms-staff-book-issue-list", array("issues" => $issue_list));
     }
 
-    public function create_new_return() {
+    public function owt_library_create_new_return() {
         global $wpdb;
 
         $user_types = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT id,type from " . $this->table_activator->tbl_user_type() . " WHERE status = %d", 1
+                        "SELECT id,type from " . $this->table_activator->owt_library_tbl_user_type() . " WHERE status = %d", 1
                 )
         );
 
         $student_branch = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT id,name from " . $this->table_activator->tbl_branch() . " WHERE status = %d", 1
+                        "SELECT id,name from " . $this->table_activator->owt_library_tbl_branch() . " WHERE status = %d", 1
                 )
         );
 
-        $this->include_template_file("report/lms-entry-return-book", array("data" => $user_types, "branches" => $student_branch));
+        $this->owt_library_include_template_file("report/owt-lms-entry-return-book", array("data" => $user_types, "branches" => $student_branch));
     }
 
-    public function create_new_issue() {
+    public function owt_library_create_new_issue() {
 
         global $wpdb;
 
         $categories = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT id,name from " . $this->table_activator->tbl_category() . " WHERE status = %d", 1
+                        "SELECT id,name from " . $this->table_activator->owt_library_tbl_category() . " WHERE status = %d", 1
                 )
         );
 
         $student_branch = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT id,name from " . $this->table_activator->tbl_branch() . " WHERE status = %d", 1
+                        "SELECT id,name from " . $this->table_activator->owt_library_tbl_branch() . " WHERE status = %d", 1
                 )
         );
 
         $staff_types = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT id,type from " . $this->table_activator->tbl_user_type() . " WHERE status = %d", 1
+                        "SELECT id,type from " . $this->table_activator->owt_library_tbl_user_type() . " WHERE status = %d", 1
                 )
         );
 
-        $this->include_template_file("report/lms-create-issue-book", array("categories" => $categories, "staff_types" => $staff_types, "branches" => $student_branch));
+        $this->owt_library_include_template_file("report/owt-lms-create-issue-book", array("categories" => $categories, "staff_types" => $staff_types, "branches" => $student_branch));
     }
 
-    public function return_book_list() {
+    public function owt_library_return_book_list() {
 
         global $wpdb;
 
         $student_book_returns = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT rt.id as return_id,issue.created_at as issued_date, student.student_id, student.name, student.email, student.phone_no, book.name as book_name, category.name as cat_name ,rt.has_fine_status,rt.created_at as returned_date from " . $this->table_activator->tbl_book_return() . " rt INNER JOIN " . $this->table_activator->tbl_book_issue() . " issue ON rt.book_issue_id = issue.issue_id INNER JOIN " . $this->table_activator->tbl_user_type() . " utype ON issue.user_type_id = utype.id INNER JOIN " . $this->table_activator->tbl_students() . " student ON student.id = issue.user_id INNER JOIN " . $this->table_activator->tbl_books() . " book ON book.id = issue.book_id INNER JOIN " . $this->table_activator->tbl_category() . " category ON category.id = book.category_id WHERE utype.type = %s AND student.status = %d", 'student', 1
+                        "SELECT rt.id as return_id,issue.created_at as issued_date, student.student_id, student.name, student.email, student.phone_no, book.name as book_name, category.name as cat_name ,rt.has_fine_status,rt.created_at as returned_date from " . $this->table_activator->owt_library_tbl_book_return() . " rt INNER JOIN " . $this->table_activator->owt_library_tbl_book_issue() . " issue ON rt.book_issue_id = issue.issue_id INNER JOIN " . $this->table_activator->owt_library_tbl_user_type() . " utype ON issue.user_type_id = utype.id INNER JOIN " . $this->table_activator->owt_library_tbl_students() . " student ON student.id = issue.user_id INNER JOIN " . $this->table_activator->owt_library_tbl_books() . " book ON book.id = issue.book_id INNER JOIN " . $this->table_activator->owt_library_tbl_category() . " category ON category.id = book.category_id WHERE utype.type = %s AND student.status = %d", 'student', 1
                 )
         );
         $book_returns = array();
@@ -297,15 +297,15 @@ class Admin {
             }
         }
 
-        $this->include_template_file("report/lms-book-return-list", array("return_books" => $student_book_returns, "book_returns" => $book_returns));
+        $this->owt_library_include_template_file("report/owt-lms-book-return-list", array("return_books" => $student_book_returns, "book_returns" => $book_returns));
     }
 
-    public function book_issue_list() {
+    public function owt_library_book_issue_list() {
         global $wpdb;
 
         $book_issues_list = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_book_issue() . " WHERE status = %d ORDER BY id desc", 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_book_issue() . " WHERE status = %d ORDER BY id desc", 1
                 )
         );
 
@@ -315,21 +315,21 @@ class Admin {
 
             foreach ($book_issues_list as $index => $issue) {
 
-                $utype = $this->get_usertype_info($issue->user_type_id);
+                $utype = $this->owt_library_get_usertype_info($issue->user_type_id);
                 $name = '';
                 $email = '';
                 $u_id = '';
                 if ($utype == "student") {
-                    $student_info = $this->get_student_info($issue->user_id);
+                    $student_info = $this->owt_library_get_student_info($issue->user_id);
                     $name = $student_info->name;
                     $email = $student_info->email;
                     $u_id = $student_info->student_id;
-                    $branch_name = $this->get_branch_info($issue->branch_id);
+                    $branch_name = $this->owt_library_get_branch_info($issue->branch_id);
                     $issue_list[] = array(
                         "issue_id" => $issue->issue_id,
-                        "category" => $this->get_category_info($issue->category_id),
-                        "book" => $this->get_book_info($issue->book_id),
-                        "user_type" => $this->get_usertype_info($issue->user_type_id),
+                        "category" => $this->owt_library_get_category_info($issue->category_id),
+                        "book" => $this->owt_library_get_book_info($issue->book_id),
+                        "user_type" => $this->owt_library_get_usertype_info($issue->user_type_id),
                         "name" => $name,
                         "email" => $email,
                         "branch" => $branch_name,
@@ -341,16 +341,16 @@ class Admin {
             }
         }
 
-        $this->include_template_file("report/lms-student-book-issue-list", array("issues" => $issue_list));
+        $this->owt_library_include_template_file("report/owt-lms-student-book-issue-list", array("issues" => $issue_list));
     }
 
-    public function create_book() {
+    public function owt_library_create_book() {
 
         global $wpdb;
 
         $categories = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT id,name from " . $this->table_activator->tbl_category() . " WHERE status = %d", 1
+                        "SELECT id,name from " . $this->table_activator->owt_library_tbl_category() . " WHERE status = %d", 1
                 )
         );
 
@@ -365,7 +365,7 @@ class Admin {
 
                 $find_book = $wpdb->get_row(
                         $wpdb->prepare(
-                                "SELECT * from " . $this->table_activator->tbl_books() . " WHERE id = %d", $bkid
+                                "SELECT * from " . $this->table_activator->owt_library_tbl_books() . " WHERE id = %d", $bkid
                         ), ARRAY_A
                 );
             }
@@ -375,7 +375,7 @@ class Admin {
 
 $count_books = $wpdb->get_var(
                 $wpdb->prepare(
-                        "SELECT count(id) from " . $this->table_activator->tbl_books() . " WHERE status = %d", 1
+                        "SELECT count(id) from " . $this->table_activator->owt_library_tbl_books() . " WHERE status = %d", 1
                 )
         );
 
@@ -384,131 +384,131 @@ if ($count_books > 4) {
   $disable_frm = 1;
 }
 
-        $this->include_template_file("book/lms-create-book", array("categories" => $categories, "book_data" => $find_book, "action" => $action,"rule"=>$disable_frm));
+        $this->owt_library_include_template_file("book/owt-lms-create-book", array("categories" => $categories, "book_data" => $find_book, "action" => $action,"rule"=>$disable_frm));
     }
 
-    public function management_dashbaord() {
+    public function owt_library_management_dashbaord() {
 
         global $wpdb;
 
         $students_count = $wpdb->get_var(
                 $wpdb->prepare(
-                        "SELECT count(id) from " . $this->table_activator->tbl_students() . " WHERE status = %d", 1
+                        "SELECT count(id) from " . $this->table_activator->owt_library_tbl_students() . " WHERE status = %d", 1
                 )
         );
 
         $staffs_count = $wpdb->get_var(
                 $wpdb->prepare(
-                        "SELECT count(id) from " . $this->table_activator->tbl_teachers_staff() . " WHERE status = %d", 1
+                        "SELECT count(id) from " . $this->table_activator->owt_library_tbl_teachers_staff() . " WHERE status = %d", 1
                 )
         );
 
         $book_count = $wpdb->get_var(
                 $wpdb->prepare(
-                        "SELECT count(id) from " . $this->table_activator->tbl_books() . " WHERE status = %d", 1
+                        "SELECT count(id) from " . $this->table_activator->owt_library_tbl_books() . " WHERE status = %d", 1
                 )
         );
 
         $issued_to_students = $wpdb->get_var(
                 $wpdb->prepare(
-                        "SELECT count(issue.id) from " . $this->table_activator->tbl_book_issue() . " issue INNER JOIN " . $this->table_activator->tbl_user_type() . " type ON issue.user_type_id = type.id WHERE issue.status = %d AND type.type = %s", 1, 'student'
+                        "SELECT count(issue.id) from " . $this->table_activator->owt_library_tbl_book_issue() . " issue INNER JOIN " . $this->table_activator->owt_library_tbl_user_type() . " type ON issue.user_type_id = type.id WHERE issue.status = %d AND type.type = %s", 1, 'student'
                 )
         );
 
         $issued_to_staffs = $wpdb->get_var(
                 $wpdb->prepare(
-                        "SELECT count(issue.id) from " . $this->table_activator->tbl_book_issue() . " issue INNER JOIN " . $this->table_activator->tbl_user_type() . " type ON issue.user_type_id = type.id WHERE issue.status = %d AND type.type != %s", 1, 'student'
+                        "SELECT count(issue.id) from " . $this->table_activator->owt_library_tbl_book_issue() . " issue INNER JOIN " . $this->table_activator->owt_library_tbl_user_type() . " type ON issue.user_type_id = type.id WHERE issue.status = %d AND type.type != %s", 1, 'student'
                 )
         );
 
-        $this->include_template_file("lms-dashboard", array("students" => $students_count, "staffs" => $staffs_count, "books" => $book_count, "issue_to_students" => $issued_to_students, "issue_to_staffs" => $issued_to_staffs));
+        $this->owt_library_include_template_file("owt-lms-dashboard", array("students" => $students_count, "staffs" => $staffs_count, "books" => $book_count, "issue_to_students" => $issued_to_students, "issue_to_staffs" => $issued_to_staffs));
     }
 
-    public function students_management() {
+    public function owt_library_students_management() {
 
         global $wpdb;
 
         $students_list = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_students() . " WHERE status = %d", 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_students() . " WHERE status = %d", 1
                 )
         );
 
         $all_branches = $wpdb->get_results(
-                "SELECT * from " . $this->table_activator->tbl_branch()
+                "SELECT * from " . $this->table_activator->owt_library_tbl_branch()
         );
 
-        $this->include_template_file("student/lms-students-list", array("students" => $students_list, "branches" => $all_branches));
+        $this->owt_library_include_template_file("student/owt-lms-students-list", array("students" => $students_list, "branches" => $all_branches));
     }
 
-    public function staffs_management() {
+    public function owt_library_staffs_management() {
 
         global $wpdb;
 
         $staff_list = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_teachers_staff() . " WHERE status = %d", 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_teachers_staff() . " WHERE status = %d", 1
                 )
         );
 
         $all_staff_types = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_user_type() . " WHERE type != %s", 'student'
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_user_type() . " WHERE type != %s", 'student'
                 )
         );
 
-        $this->include_template_file("staff/lms-staffs-list", array("staffs" => $staff_list, "staff_types" => $all_staff_types));
+        $this->owt_library_include_template_file("staff/owt-lms-staffs-list", array("staffs" => $staff_list, "staff_types" => $all_staff_types));
     }
 
-    public function books_management() {
+    public function owt_library_books_management() {
 
         global $wpdb;
 
         $books_list = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_books() . " WHERE status = %d", 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_books() . " WHERE status = %d", 1
                 )
         );
 
         $all_categories = $wpdb->get_results(
-                "SELECT * from " . $this->table_activator->tbl_category()
+                "SELECT * from " . $this->table_activator->owt_library_tbl_category()
         );
 
-        $this->include_template_file("book/lms-books-list", array("books" => $books_list, "categories" => $all_categories));
+        $this->owt_library_include_template_file("book/owt-lms-books-list", array("books" => $books_list, "categories" => $all_categories));
     }
 
-    public function settings_panel() {
+    public function owt_library_settings_panel() {
 
         global $wpdb;
 
         $courties_list = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_country() . " WHERE status = %d", 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_country() . " WHERE status = %d", 1
                 )
         );
 
         $currencies_list = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_country_currency() . " WHERE status = %d", 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_country_currency() . " WHERE status = %d", 1
                 )
         );
 
-        $this->include_template_file("report/lms-settings-panel", array("countries" => $courties_list, "currencies" => $currencies_list));
+        $this->owt_library_include_template_file("report/owt-lms-settings-panel", array("countries" => $courties_list, "currencies" => $currencies_list));
     }
 
-    public function create_student() {
+    public function owt_library_create_student() {
 
         global $wpdb;
 
         $get_branch = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_branch() . " WHERE status = %d", 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_branch() . " WHERE status = %d", 1
                 )
         );
 
         $courties_list = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_country() . " WHERE status = %d", 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_country() . " WHERE status = %d", 1
                 )
         );
 
@@ -525,32 +525,32 @@ if ($count_books > 4) {
 
                 $find_student = $wpdb->get_row(
                         $wpdb->prepare(
-                                "SELECT * from " . $this->table_activator->tbl_students() . " WHERE id = %d", $stid
+                                "SELECT * from " . $this->table_activator->owt_library_tbl_students() . " WHERE id = %d", $stid
                         ), ARRAY_A
                 );
             }
         }
 
 $total_count_student = $wpdb->get_results(
-                "SELECT count(*) from " . $this->table_activator->tbl_students()
+                "SELECT count(*) from " . $this->table_activator->owt_library_tbl_students()
         );
 
-        $this->include_template_file("student/lms-create-student", array("data" => $get_branch, "countries" => $courties_list, "student_data" => $find_student, "action" => $action, "total_students" => count($total_count_student)));
+        $this->owt_library_include_template_file("student/owt-lms-create-student", array("data" => $get_branch, "countries" => $courties_list, "student_data" => $find_student, "action" => $action, "total_students" => count($total_count_student)));
     }
 
-    public function create_staff() {
+    public function owt_library_create_staff() {
 
         global $wpdb;
 
         $courties_list = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_country() . " WHERE status = %d", 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_country() . " WHERE status = %d", 1
                 )
         );
 
         $staff_types = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_user_type() . " WHERE type != %s", 'student'
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_user_type() . " WHERE type != %s", 'student'
                 )
         );
 
@@ -565,21 +565,21 @@ $total_count_student = $wpdb->get_results(
 
                 $find_staff = $wpdb->get_row(
                         $wpdb->prepare(
-                                "SELECT * from " . $this->table_activator->tbl_teachers_staff() . " WHERE id = %d", $stfid
+                                "SELECT * from " . $this->table_activator->owt_library_tbl_teachers_staff() . " WHERE id = %d", $stfid
                         ), ARRAY_A
                 );
             }
         }
 
 $total_count_staffs = $wpdb->get_results(
-                "SELECT count(*) from " . $this->table_activator->tbl_teachers_staff()
+                "SELECT count(*) from " . $this->table_activator->owt_library_tbl_teachers_staff()
         );
 
         wp_enqueue_media();
-        $this->include_template_file("staff/lms-create-staff", array("countries" => $courties_list, "staff_types" => $staff_types, "staff_data" => $find_staff, "action" => $action, "total_staffs" => count($total_count_staffs)));
+        $this->owt_library_include_template_file("staff/owt-lms-create-staff", array("countries" => $courties_list, "staff_types" => $staff_types, "staff_data" => $find_staff, "action" => $action, "total_staffs" => count($total_count_staffs)));
     }
 
-    public function admin_notice() {
+    public function owt_library_admin_notice() {
         ?>
         <div class="notice notice-success is-dismissible">
             <p><?php _e('Sadang Library Management System has successfully installed! Enjoy the system. Click here to visit Jack Henry Sadang <a href="https://jsadang.wordpress.com" target="_blank" class="button button-primary button-large">Click here</a>', 'sample-text-domain'); ?></p>
@@ -587,7 +587,7 @@ $total_count_staffs = $wpdb->get_results(
         <?php
     }
 
-    public function ajax_handler() {
+    public function owt_library_ajax_handler() {
 
         global $wpdb;
 
@@ -595,10 +595,10 @@ $total_count_staffs = $wpdb->get_results(
 
         if (!empty($param)) {
 
-            if ($param == "lib_create_student") {
+            if ($param == "owt_lib_create_student") {
 
 		$total_count_student = $wpdb->get_results(
-                        "SELECT count(*) from " . $this->table_activator->tbl_students()
+                        "SELECT count(*) from " . $this->table_activator->owt_library_tbl_students()
                 );
 
                 if (count($total_count_student) > 250) {
@@ -633,7 +633,7 @@ $total_count_staffs = $wpdb->get_results(
                     if (!empty($txt_email)) { // checking email existance 
                         $find_email = $wpdb->get_row(
                                 $wpdb->prepare(
-                                        "SELECT * from " . $this->table_activator->tbl_students() . " WHERE email = %s", $txt_email
+                                        "SELECT * from " . $this->table_activator->owt_library_tbl_students() . " WHERE email = %s", $txt_email
                                 )
                         );
                         if (!empty($find_email)) {
@@ -644,7 +644,7 @@ $total_count_staffs = $wpdb->get_results(
                     if (!empty($reg_id)) { // checking email existance 
                         $find_reg_id = $wpdb->get_row(
                                 $wpdb->prepare(
-                                        "SELECT * from " . $this->table_activator->tbl_students() . " WHERE student_id = %s", $reg_id
+                                        "SELECT * from " . $this->table_activator->owt_library_tbl_students() . " WHERE student_id = %s", $reg_id
                                 )
                         );
                         if (!empty($find_reg_id)) {
@@ -652,7 +652,7 @@ $total_count_staffs = $wpdb->get_results(
                         }
                     }
 
-                    $wpdb->insert($this->table_activator->tbl_students(), array(
+                    $wpdb->insert($this->table_activator->owt_library_tbl_students(), array(
                         "name" => $txt_name,
                         "student_id" => $reg_id,
                         "email" => $txt_email,
@@ -677,14 +677,14 @@ $total_count_staffs = $wpdb->get_results(
 
                     $find_student = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_students() . " WHERE student_id = %d", $reg_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_students() . " WHERE student_id = %d", $reg_id
                             )
                     );
 
                     if (!empty($find_student)) {
 
                         $wpdb->update(
-                                $this->table_activator->tbl_students(), array(
+                                $this->table_activator->owt_library_tbl_students(), array(
                             "name" => $txt_name,
                             "email" => $txt_email,
                             "branch_id" => $txt_branch,
@@ -708,7 +708,7 @@ $total_count_staffs = $wpdb->get_results(
                         $this->json(0, "Invalid Student ID");
                     }
                 }
-            } elseif ($param == "lib_delete_student") {
+            } elseif ($param == "owt_lib_delete_student") {
 
                 $student_id = isset($_REQUEST['st']) ? intval($_REQUEST['st']) : 0;
 
@@ -716,13 +716,13 @@ $total_count_staffs = $wpdb->get_results(
 
                     $find_student = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_students() . " WHERE id = %d", $student_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_students() . " WHERE id = %d", $student_id
                             )
                     );
 
                     if (!empty($find_student)) {
 
-                        $wpdb->delete($this->table_activator->tbl_students(), array(
+                        $wpdb->delete($this->table_activator->owt_library_tbl_students(), array(
                             "id" => $student_id
                         ));
                         $this->json(1, "Student deleted successfully");
@@ -732,14 +732,14 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid ID, Student not found");
                 }
-            } elseif ($param == "lib_add_branch") {
+            } elseif ($param == "owt_lib_add_branch") {
 
-                $branch = isset($_REQUEST['wpbranch']) ? sanitize_text_field($_REQUEST['wpbranch']) : "";
+                $branch = isset($_REQUEST['wpowt_branch']) ? sanitize_text_field($_REQUEST['wpowt_branch']) : "";
                 if (!empty($branch)) {
 
                     $is_branch_exists = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_branch() . " WHERE LOWER(TRIM(name)) = %s", strtolower(trim($branch))
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_branch() . " WHERE LOWER(TRIM(name)) = %s", strtolower(trim($branch))
                             )
                     );
 
@@ -748,7 +748,7 @@ $total_count_staffs = $wpdb->get_results(
                         $this->json(0, "Branch/Class already created");
                     } else {
 
-                        $wpdb->insert($this->table_activator->tbl_branch(), array(
+                        $wpdb->insert($this->table_activator->owt_library_tbl_branch(), array(
                             "name" => $branch
                         ));
 
@@ -762,10 +762,10 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid Branch value");
                 }
-            } elseif ($param == "lib_create_staff") {
+            } elseif ($param == "owt_lib_create_staff") {
 
 $total_count_staffs = $wpdb->get_results(
-                        "SELECT count(*) from " . $this->table_activator->tbl_teachers_staff()
+                        "SELECT count(*) from " . $this->table_activator->owt_library_tbl_teachers_staff()
                 );
 
                 if (count($total_count_staffs) > 250) {
@@ -790,7 +790,7 @@ $total_count_staffs = $wpdb->get_results(
                     if (!empty($txt_email)) { // checking email existance 
                         $find_email = $wpdb->get_row(
                                 $wpdb->prepare(
-                                        "SELECT * from " . $this->table_activator->tbl_teachers_staff() . " WHERE email = %s", $txt_email
+                                        "SELECT * from " . $this->table_activator->owt_library_tbl_teachers_staff() . " WHERE email = %s", $txt_email
                                 )
                         );
                         if (!empty($find_email)) {
@@ -801,7 +801,7 @@ $total_count_staffs = $wpdb->get_results(
                     if (!empty($reg_id)) { // checking ID existance 
                         $find_reg_id = $wpdb->get_row(
                                 $wpdb->prepare(
-                                        "SELECT * from " . $this->table_activator->tbl_teachers_staff() . " WHERE staff_id = %s", $reg_id
+                                        "SELECT * from " . $this->table_activator->owt_library_tbl_teachers_staff() . " WHERE staff_id = %s", $reg_id
                                 )
                         );
                         if (!empty($find_reg_id)) {
@@ -809,7 +809,7 @@ $total_count_staffs = $wpdb->get_results(
                         }
                     }
 
-                    $wpdb->insert($this->table_activator->tbl_teachers_staff(), array(
+                    $wpdb->insert($this->table_activator->owt_library_tbl_teachers_staff(), array(
                         "name" => $txt_name,
                         "staff_id" => $reg_id,
                         "staff_type_id" => $dd_staff_type_id,
@@ -831,14 +831,14 @@ $total_count_staffs = $wpdb->get_results(
 
                     $find_reg_id = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_teachers_staff() . " WHERE staff_id = %s", $reg_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_teachers_staff() . " WHERE staff_id = %s", $reg_id
                             )
                     );
 
                     if (!empty($find_reg_id)) {
 
                         $wpdb->update(
-                                $this->table_activator->tbl_teachers_staff(), array(
+                                $this->table_activator->owt_library_tbl_teachers_staff(), array(
                             "name" => $txt_name,
                             "staff_type_id" => $dd_staff_type_id,
                             "email" => $txt_email,
@@ -859,7 +859,7 @@ $total_count_staffs = $wpdb->get_results(
                         $this->json(0, "Invalid Staff ID");
                     }
                 }
-            } elseif ($param == "lib_delete_staff") {
+            } elseif ($param == "owt_lib_delete_staff") {
 
                 $staff_id = isset($_REQUEST['st']) ? intval($_REQUEST['st']) : 0;
 
@@ -867,13 +867,13 @@ $total_count_staffs = $wpdb->get_results(
 
                     $find_staff = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_teachers_staff() . " WHERE id = %d", $staff_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_teachers_staff() . " WHERE id = %d", $staff_id
                             )
                     );
 
                     if (!empty($find_staff)) {
 
-                        $wpdb->delete($this->table_activator->tbl_teachers_staff(), array(
+                        $wpdb->delete($this->table_activator->owt_library_tbl_teachers_staff(), array(
                             "id" => $staff_id
                         ));
                         $this->json(1, "Staff deleted successfully");
@@ -883,14 +883,14 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid ID, Staff not found");
                 }
-            } elseif ($param == "lib_add_staff_type") {
+            } elseif ($param == "owt_lib_add_staff_type") {
 
-                $type = isset($_REQUEST['wptype']) ? sanitize_text_field($_REQUEST['wptype']) : "";
+                $type = isset($_REQUEST['wpowt_type']) ? sanitize_text_field($_REQUEST['wpowt_type']) : "";
                 if (!empty($type)) {
 
                     $is_type_exists = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_user_type() . " WHERE LOWER(TRIM(type)) = %s", strtolower(trim($type))
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_user_type() . " WHERE LOWER(TRIM(type)) = %s", strtolower(trim($type))
                             )
                     );
 
@@ -899,7 +899,7 @@ $total_count_staffs = $wpdb->get_results(
                         $this->json(0, "Staff Type already created");
                     } else {
 
-                        $wpdb->insert($this->table_activator->tbl_user_type(), array(
+                        $wpdb->insert($this->table_activator->owt_library_tbl_user_type(), array(
                             "type" => $type
                         ));
 
@@ -913,7 +913,7 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid Staff type value");
                 }
-            } elseif ($param == "lib_create_book") {
+            } elseif ($param == "owt_lib_create_book") {
 
                 $txt_category = isset($_REQUEST['txt_category']) ? sanitize_text_field($_REQUEST['txt_category']) : "";
                 $txt_book_id = isset($_REQUEST['txt_book_id']) ? sanitize_text_field($_REQUEST['txt_book_id']) : "";
@@ -932,7 +932,7 @@ $total_count_staffs = $wpdb->get_results(
                     if (!empty($txt_book_id)) { // checking email existance 
                         $find_Book = $wpdb->get_row(
                                 $wpdb->prepare(
-                                        "SELECT * from " . $this->table_activator->tbl_books() . " WHERE book_id = %s", $txt_book_id
+                                        "SELECT * from " . $this->table_activator->owt_library_tbl_books() . " WHERE book_id = %s", $txt_book_id
                                 )
                         );
                         if (!empty($find_Book)) {
@@ -940,7 +940,7 @@ $total_count_staffs = $wpdb->get_results(
                         }
                     }
 
-                    $wpdb->insert($this->table_activator->tbl_books(), array(
+                    $wpdb->insert($this->table_activator->owt_library_tbl_books(), array(
                         "book_id" => $txt_book_id,
                         "name" => $txt_name,
                         "author_info" => $txt_author,
@@ -961,14 +961,14 @@ $total_count_staffs = $wpdb->get_results(
 
                     $find_bk_id = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_books() . " WHERE book_id = %s", $txt_book_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_books() . " WHERE book_id = %s", $txt_book_id
                             )
                     );
 
                     if (!empty($find_bk_id)) {
 
                         $wpdb->update(
-                                $this->table_activator->tbl_books(), array(
+                                $this->table_activator->owt_library_tbl_books(), array(
                             "name" => $txt_name,
                             "author_info" => $txt_author,
                             "publisher_info" => $txt_publication,
@@ -988,7 +988,7 @@ $total_count_staffs = $wpdb->get_results(
                         $this->json(0, "Invalid Book ID");
                     }
                 }
-            } elseif ($param == "lib_add_book_category") {
+            } elseif ($param == "owt_lib_add_book_category") {
 
                 $category_title = isset($_REQUEST['txt_title']) ? sanitize_text_field($_REQUEST['txt_title']) : "";
 
@@ -996,7 +996,7 @@ $total_count_staffs = $wpdb->get_results(
 
                     $is_exists = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_category() . " WHERE LOWER(TRIM(name)) = %s", strtolower(trim($category_title))
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_category() . " WHERE LOWER(TRIM(name)) = %s", strtolower(trim($category_title))
                             )
                     );
 
@@ -1005,7 +1005,7 @@ $total_count_staffs = $wpdb->get_results(
                         $this->json(0, "Category already created");
                     } else {
 
-                        $wpdb->insert($this->table_activator->tbl_category(), array(
+                        $wpdb->insert($this->table_activator->owt_library_tbl_category(), array(
                             "name" => $category_title
                         ));
 
@@ -1019,7 +1019,7 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid Category value");
                 }
-            } elseif ($param == "lib_delete_book") {
+            } elseif ($param == "owt_lib_delete_book") {
 
                 $book_id = isset($_REQUEST['st']) ? intval($_REQUEST['st']) : 0;
 
@@ -1027,13 +1027,13 @@ $total_count_staffs = $wpdb->get_results(
 
                     $find_book = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_books() . " WHERE id = %d", $book_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_books() . " WHERE id = %d", $book_id
                             )
                     );
 
                     if (!empty($find_book)) {
 
-                        $wpdb->delete($this->table_activator->tbl_books(), array(
+                        $wpdb->delete($this->table_activator->owt_library_tbl_books(), array(
                             "id" => $book_id
                         ));
                         $this->json(1, "Book deleted successfully");
@@ -1043,14 +1043,14 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid ID, Book not found");
                 }
-            } elseif ($param == "lib_filter_books") {
+            } elseif ($param == "owt_lib_filter_books") {
 
                 $category_id = isset($_REQUEST['ct']) ? intval($_REQUEST['ct']) : "";
                 if (!empty($category_id)) {
 
                     $books = $wpdb->get_results(
                             $wpdb->prepare(
-                                    "SELECT id,name from " . $this->table_activator->tbl_books() . " WHERE category_id = %d", $category_id
+                                    "SELECT id,name from " . $this->table_activator->owt_library_tbl_books() . " WHERE category_id = %d", $category_id
                             ), ARRAY_A
                     );
                     if (count($books) > 0) {
@@ -1061,14 +1061,14 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid ID");
                 }
-            } elseif ($param == "lib_filter_users") {
+            } elseif ($param == "owt_lib_filter_users") {
 
                 $user_type_id = isset($_REQUEST['uid']) ? intval($_REQUEST['uid']) : "";
                 if (!empty($user_type_id)) {
 
                     $user_type = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_user_type() . " WHERE id = %d", $user_type_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_user_type() . " WHERE id = %d", $user_type_id
                             )
                     );
                     if (!empty($user_type)) {
@@ -1080,7 +1080,7 @@ $total_count_staffs = $wpdb->get_results(
 
                             $staffs = $wpdb->get_results(
                                     $wpdb->prepare(
-                                            "SELECT id,name,staff_id from " . $this->table_activator->tbl_teachers_staff() . " WHERE staff_type_id = %d AND status = %d", $user_type_id, 1
+                                            "SELECT id,name,staff_id from " . $this->table_activator->owt_library_tbl_teachers_staff() . " WHERE staff_type_id = %d AND status = %d", $user_type_id, 1
                                     ), ARRAY_A
                             );
 
@@ -1090,14 +1090,14 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid user type value");
                 }
-            } elseif ($param == "lib_filter_branch") {
+            } elseif ($param == "owt_lib_filter_branch") {
 
                 $branch_id = isset($_REQUEST['bid']) ? intval($_REQUEST['bid']) : "";
                 if (!empty($branch_id)) {
 
                     $students_list = $wpdb->get_results(
                             $wpdb->prepare(
-                                    "SELECT id,name,student_id from " . $this->table_activator->tbl_students() . " WHERE branch_id = %d", $branch_id
+                                    "SELECT id,name,student_id from " . $this->table_activator->owt_library_tbl_students() . " WHERE branch_id = %d", $branch_id
                             ), ARRAY_A
                     );
 
@@ -1111,9 +1111,9 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid branch, please select a valid branch");
                 }
-            } elseif ($param == "lib_issue_book") {
+            } elseif ($param == "owt_lib_issue_book") {
 
-                $u_type = isset($_REQUEST['wphidden_type']) ? trim($_REQUEST['wphidden_type']) : '';
+                $u_type = isset($_REQUEST['wpowt_hidden_type']) ? trim($_REQUEST['wpowt_hidden_type']) : '';
 
                 $txt_category = isset($_REQUEST['txt_category']) ? intval($_REQUEST['txt_category']) : "";
                 if (!empty($txt_category) && $txt_category == -1) {
@@ -1155,7 +1155,7 @@ $total_count_staffs = $wpdb->get_results(
                             $has_issued = 0;
                             $has_student_already_book = $wpdb->get_row(
                                     $wpdb->prepare(
-                                            "SELECT * from " . $this->table_activator->tbl_book_issue() . " WHERE user_id = %d AND status = %d", $dd_student_id, 1
+                                            "SELECT * from " . $this->table_activator->owt_library_tbl_book_issue() . " WHERE user_id = %d AND status = %d", $dd_student_id, 1
                                     )
                             );
 
@@ -1166,7 +1166,7 @@ $total_count_staffs = $wpdb->get_results(
                             // checking for the fine
                             $has_fine = $wpdb->get_row(
                                     $wpdb->prepare(
-                                            "SELECT * from " . $this->table_activator->tbl_book_return() . " WHERE user_id = %d AND has_fine_status = %d", $dd_student_id, 1
+                                            "SELECT * from " . $this->table_activator->owt_library_tbl_book_return() . " WHERE user_id = %d AND has_fine_status = %d", $dd_student_id, 1
                                     )
                             );
 
@@ -1177,7 +1177,7 @@ $total_count_staffs = $wpdb->get_results(
 
                             if (!$has_issued) {
 
-                                $wpdb->insert($this->table_activator->tbl_book_issue(), array(
+                                $wpdb->insert($this->table_activator->owt_library_tbl_book_issue(), array(
                                     "issue_id" => $issue_id,
                                     "category_id" => $txt_category,
                                     "book_id" => $dd_book,
@@ -1212,7 +1212,7 @@ $total_count_staffs = $wpdb->get_results(
                         $has_issued = 0;
                         $has_staff_already_book = $wpdb->get_row(
                                 $wpdb->prepare(
-                                        "SELECT * from " . $this->table_activator->tbl_book_issue() . " WHERE user_id = %d AND status = %d", $dd_staff_id, 1
+                                        "SELECT * from " . $this->table_activator->owt_library_tbl_book_issue() . " WHERE user_id = %d AND status = %d", $dd_staff_id, 1
                                 )
                         );
 
@@ -1223,7 +1223,7 @@ $total_count_staffs = $wpdb->get_results(
                         // checking for the fine
                         $has_fine = $wpdb->get_row(
                                 $wpdb->prepare(
-                                        "SELECT * from " . $this->table_activator->tbl_book_return() . " WHERE user_id = %d AND has_fine_status = %d", $dd_staff_id, 1
+                                        "SELECT * from " . $this->table_activator->owt_library_tbl_book_return() . " WHERE user_id = %d AND has_fine_status = %d", $dd_staff_id, 1
                                 )
                         );
 
@@ -1234,7 +1234,7 @@ $total_count_staffs = $wpdb->get_results(
 
                         if (!$has_issued) {
 
-                            $wpdb->insert($this->table_activator->tbl_book_issue(), array(
+                            $wpdb->insert($this->table_activator->owt_library_tbl_book_issue(), array(
                                 "issue_id" => $issue_id,
                                 "category_id" => $txt_category,
                                 "book_id" => $dd_book,
@@ -1256,7 +1256,7 @@ $total_count_staffs = $wpdb->get_results(
                         }
                     }
                 }
-            } elseif ($param == "lib_student_issued_books") {
+            } elseif ($param == "owt_lib_student_issued_books") {
 
                 $user_id = isset($_REQUEST['stid']) ? intval($_REQUEST['stid']) : 0;
                 if ($user_id == -1) {
@@ -1265,7 +1265,7 @@ $total_count_staffs = $wpdb->get_results(
 
                 $issues_books = $wpdb->get_results(
                         $wpdb->prepare(
-                                "Select issue.*, book.name as book_name from " . $this->table_activator->tbl_book_issue() . " issue INNER JOIN " . $this->table_activator->tbl_books() . " book ON issue.book_id = book.id WHERE issue.user_id = %d AND issue.status= %d", $user_id, 1
+                                "Select issue.*, book.name as book_name from " . $this->table_activator->owt_library_tbl_book_issue() . " issue INNER JOIN " . $this->table_activator->owt_library_tbl_books() . " book ON issue.book_id = book.id WHERE issue.user_id = %d AND issue.status= %d", $user_id, 1
                         ), ARRAY_A
                 );
 
@@ -1275,7 +1275,7 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "No books issued");
                 }
-            } elseif ($param == "lib_staff_issued_books") {
+            } elseif ($param == "owt_lib_staff_issued_books") {
 
                 $user_id = isset($_REQUEST['stfid']) ? intval($_REQUEST['stfid']) : 0;
                 if ($user_id == -1) {
@@ -1284,7 +1284,7 @@ $total_count_staffs = $wpdb->get_results(
 
                 $issues_books = $wpdb->get_results(
                         $wpdb->prepare(
-                                "Select issue.*, book.name as book_name from " . $this->table_activator->tbl_book_issue() . " issue INNER JOIN " . $this->table_activator->tbl_books() . " book ON issue.book_id = book.id WHERE issue.user_id = %d AND issue.status= %d", $user_id, 1
+                                "Select issue.*, book.name as book_name from " . $this->table_activator->owt_library_tbl_book_issue() . " issue INNER JOIN " . $this->table_activator->owt_library_tbl_books() . " book ON issue.book_id = book.id WHERE issue.user_id = %d AND issue.status= %d", $user_id, 1
                         ), ARRAY_A
                 );
 
@@ -1294,7 +1294,7 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "No books issued");
                 }
-            } elseif ($param == "lib_student_return_book") {
+            } elseif ($param == "owt_lib_student_return_book") {
 
                 $book_return_list = isset($_REQUEST['book_return_list']) ? $_REQUEST['book_return_list'] : array();
 
@@ -1304,7 +1304,7 @@ $total_count_staffs = $wpdb->get_results(
 
                         $book_details = $wpdb->get_row(
                                 $wpdb->prepare(
-                                        "SELECT * from " . $this->table_activator->tbl_book_issue() . " WHERE issue_id = %s", $issue
+                                        "SELECT * from " . $this->table_activator->owt_library_tbl_book_issue() . " WHERE issue_id = %s", $issue
                                 )
                         );
 
@@ -1325,11 +1325,11 @@ $total_count_staffs = $wpdb->get_results(
                                 // ok its fine to keep
                             } else {
                                 $extra_days = $book_kept_days - $count_days;
-                                $late_fine = $extra_days * PLUGIN_BOOK_LATE_FINE;
+                                $late_fine = $extra_days * OWT_LIBRARY_PLUGIN_BOOK_LATE_FINE;
                             }
                             $late_fine_status = $late_fine > 0 ? 1 : 0;
                             // book return entry
-                            $wpdb->insert($this->table_activator->tbl_book_return(), array(
+                            $wpdb->insert($this->table_activator->owt_library_tbl_book_return(), array(
                                 "user_id" => $user_id,
                                 "book_issue_id" => $issue,
                                 "has_fine_status" => $late_fine_status
@@ -1339,7 +1339,7 @@ $total_count_staffs = $wpdb->get_results(
 
                                 $return_id = $wpdb->insert_id;
                                 // late fine insert
-                                $wpdb->insert($this->table_activator->tbl_book_late_fine(), array(
+                                $wpdb->insert($this->table_activator->owt_library_tbl_book_late_fine(), array(
                                     "book_return_id" => $return_id,
                                     "extra_days" => $extra_days,
                                     "fine_amount" => $late_fine,
@@ -1349,7 +1349,7 @@ $total_count_staffs = $wpdb->get_results(
 
                             //update return status
                             $wpdb->update(
-                                    $this->table_activator->tbl_book_issue(), array(
+                                    $this->table_activator->owt_library_tbl_book_issue(), array(
                                 "status" => 0
                                     ), array(
                                 "issue_id" => $issue
@@ -1362,35 +1362,35 @@ $total_count_staffs = $wpdb->get_results(
 
                     $this->json(0, "No Books found to return");
                 }
-            } elseif ($param == "lib_student_fine_details") {
+            } elseif ($param == "owt_lib_student_fine_details") {
                 $return_id = isset($_REQUEST['return_id']) ? intval($_REQUEST['return_id']) : '';
 
                 $return_details = $wpdb->get_row(
                         $wpdb->prepare(
-                                "SELECT * from " . $this->table_activator->tbl_book_late_fine() . " WHERE book_return_id = %d", $return_id
+                                "SELECT * from " . $this->table_activator->owt_library_tbl_book_late_fine() . " WHERE book_return_id = %d", $return_id
                         ), ARRAY_A
                 );
 
                 $this->json(1, "fine details found", $return_details);
-            } elseif ($param == "lib_pay_late_fine") {
+            } elseif ($param == "owt_lib_pay_late_fine") {
 
-                $return_id = isset($_REQUEST['wplib_return_id']) ? intval($_REQUEST['wplib_return_id']) : "";
+                $return_id = isset($_REQUEST['wpowt_lib_return_id']) ? intval($_REQUEST['wpowt_lib_return_id']) : "";
                 if (!empty($return_id)) {
 
                     $late_fine = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_book_late_fine() . " WHERE book_return_id = %d", $return_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_book_late_fine() . " WHERE book_return_id = %d", $return_id
                             )
                     );
                     if (!empty($late_fine)) {
                         // update fine pay status
-                        $wpdb->update($this->table_activator->tbl_book_late_fine(), array(
+                        $wpdb->update($this->table_activator->owt_library_tbl_book_late_fine(), array(
                             "fine_pay_status" => 1
                                 ), array(
                             "book_return_id" => $return_id
                         ));
                         // update return book
-                        $wpdb->update($this->table_activator->tbl_book_return(), array(
+                        $wpdb->update($this->table_activator->owt_library_tbl_book_return(), array(
                             "has_fine_status" => 0,
                                 ), array(
                             "id" => $return_id
@@ -1403,7 +1403,7 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid Book Return");
                 }
-            } elseif ($param == "lib_update_branch") {
+            } elseif ($param == "owt_lib_update_branch") {
 
                 $branch_name = isset($_REQUEST['branch_name']) ? trim($_REQUEST['branch_name']) : "";
                 $branch_id = isset($_REQUEST['branch_id']) ? intval($_REQUEST['branch_id']) : "";
@@ -1412,14 +1412,14 @@ $total_count_staffs = $wpdb->get_results(
 
                     $branch_data = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_branch() . " WHERE LOWER(TRIM(name)) = %s AND status = %d AND id != %d", strtolower($branch_name), 1, $branch_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_branch() . " WHERE LOWER(TRIM(name)) = %s AND status = %d AND id != %d", strtolower($branch_name), 1, $branch_id
                             )
                     );
 
                     if (!empty($branch_data)) {
                         $this->json(0, "Branch name already exists");
                     } else {
-                        $wpdb->update($this->table_activator->tbl_branch(), array(
+                        $wpdb->update($this->table_activator->owt_library_tbl_branch(), array(
                             "name" => $branch_name
                                 ), array(
                             "id" => $branch_id
@@ -1430,14 +1430,14 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Please provide branch name");
                 }
-            } elseif ($param == "lib_delete_branch") {
+            } elseif ($param == "owt_lib_delete_branch") {
                 $branch_id = isset($_REQUEST['branch_id']) ? intval($_REQUEST['branch_id']) : "";
 
                 if ($branch_id > 0) {
 
                     $branch_data = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_branch() . " WHERE id = %d", $branch_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_branch() . " WHERE id = %d", $branch_id
                             )
                     );
 
@@ -1445,14 +1445,14 @@ $total_count_staffs = $wpdb->get_results(
 
                         $find_student = $wpdb->get_row(
                                 $wpdb->prepare(
-                                        "SELECT * from " . $this->table_activator->tbl_students() . " WHERE branch_id = %d", $branch_id
+                                        "SELECT * from " . $this->table_activator->owt_library_tbl_students() . " WHERE branch_id = %d", $branch_id
                                 )
                         );
 
                         if (!empty($find_student)) {
                             $this->json(0, "Student(s) exists in this branch");
                         } else {
-                            $wpdb->delete($this->table_activator->tbl_branch(), array(
+                            $wpdb->delete($this->table_activator->owt_library_tbl_branch(), array(
                                 "id" => $branch_id
                             ));
 
@@ -1464,7 +1464,7 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid branch to delete");
                 }
-            } elseif ($param == "lib_update_stafftype") {
+            } elseif ($param == "owt_lib_update_stafftype") {
 
                 $staff_name = isset($_REQUEST['staff_name']) ? trim($_REQUEST['staff_name']) : "";
                 $staff_id = isset($_REQUEST['staff_id']) ? intval($_REQUEST['staff_id']) : "";
@@ -1473,14 +1473,14 @@ $total_count_staffs = $wpdb->get_results(
 
                     $staff_data = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_user_type() . " WHERE LOWER(TRIM(type)) = %s AND status = %d AND id != %d", strtolower($staff_name), 1, $staff_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_user_type() . " WHERE LOWER(TRIM(type)) = %s AND status = %d AND id != %d", strtolower($staff_name), 1, $staff_id
                             )
                     );
 
                     if (!empty($staff_data)) {
                         $this->json(0, "Staff type name already exists");
                     } else {
-                        $wpdb->update($this->table_activator->tbl_user_type(), array(
+                        $wpdb->update($this->table_activator->owt_library_tbl_user_type(), array(
                             "type" => $staff_name
                                 ), array(
                             "id" => $staff_id
@@ -1491,7 +1491,7 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Please provide staff type name");
                 }
-            } elseif ($param == "lib_delete_stafftype") {
+            } elseif ($param == "owt_lib_delete_stafftype") {
 
                 $staff_id = isset($_REQUEST['staff_id']) ? intval($_REQUEST['staff_id']) : "";
 
@@ -1499,7 +1499,7 @@ $total_count_staffs = $wpdb->get_results(
 
                     $staff_data = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_user_type() . " WHERE id = %d", $staff_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_user_type() . " WHERE id = %d", $staff_id
                             )
                     );
 
@@ -1507,14 +1507,14 @@ $total_count_staffs = $wpdb->get_results(
 
                         $find_staff = $wpdb->get_row(
                                 $wpdb->prepare(
-                                        "SELECT * from " . $this->table_activator->tbl_teachers_staff() . " WHERE staff_type_id = %d", $staff_id
+                                        "SELECT * from " . $this->table_activator->owt_library_tbl_teachers_staff() . " WHERE staff_type_id = %d", $staff_id
                                 )
                         );
 
                         if (!empty($find_staff)) {
                             $this->json(0, "Staff(s) exists of this staff type");
                         } else {
-                            $wpdb->delete($this->table_activator->tbl_user_type(), array(
+                            $wpdb->delete($this->table_activator->owt_library_tbl_user_type(), array(
                                 "id" => $staff_id
                             ));
 
@@ -1526,7 +1526,7 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid staff type to delete");
                 }
-            } elseif ($param == "lib_update_category_title") {
+            } elseif ($param == "owt_lib_update_category_title") {
 
                 $category_name = isset($_REQUEST['category_name']) ? trim($_REQUEST['category_name']) : "";
                 $category_id = isset($_REQUEST['category_id']) ? intval($_REQUEST['category_id']) : "";
@@ -1535,14 +1535,14 @@ $total_count_staffs = $wpdb->get_results(
 
                     $category_data = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_category() . " WHERE LOWER(TRIM(name)) = %s AND status = %d AND id != %d", strtolower($category_name), 1, $category_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_category() . " WHERE LOWER(TRIM(name)) = %s AND status = %d AND id != %d", strtolower($category_name), 1, $category_id
                             )
                     );
 
                     if (!empty($category_data)) {
                         $this->json(0, "Category name already exists");
                     } else {
-                        $wpdb->update($this->table_activator->tbl_category(), array(
+                        $wpdb->update($this->table_activator->owt_library_tbl_category(), array(
                             "name" => $category_name
                                 ), array(
                             "id" => $category_id
@@ -1553,7 +1553,7 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Please provide category name");
                 }
-            } elseif ($param == "lib_delete_category") {
+            } elseif ($param == "owt_lib_delete_category") {
 
                 $category_id = isset($_REQUEST['category_id']) ? intval($_REQUEST['category_id']) : "";
 
@@ -1561,7 +1561,7 @@ $total_count_staffs = $wpdb->get_results(
 
                     $category_data = $wpdb->get_row(
                             $wpdb->prepare(
-                                    "SELECT * from " . $this->table_activator->tbl_category() . " WHERE id = %d", $category_id
+                                    "SELECT * from " . $this->table_activator->owt_library_tbl_category() . " WHERE id = %d", $category_id
                             )
                     );
 
@@ -1569,14 +1569,14 @@ $total_count_staffs = $wpdb->get_results(
 
                         $find_category = $wpdb->get_row(
                                 $wpdb->prepare(
-                                        "SELECT * from " . $this->table_activator->tbl_books() . " WHERE category_id = %d", $category_id
+                                        "SELECT * from " . $this->table_activator->owt_library_tbl_books() . " WHERE category_id = %d", $category_id
                                 )
                         );
 
                         if (!empty($find_category)) {
                             $this->json(0, "Book(s) exists of this category");
                         } else {
-                            $wpdb->delete($this->table_activator->tbl_category(), array(
+                            $wpdb->delete($this->table_activator->owt_library_tbl_category(), array(
                                 "id" => $category_id
                             ));
 
@@ -1588,7 +1588,7 @@ $total_count_staffs = $wpdb->get_results(
                 } else {
                     $this->json(0, "Invalid staff type to delete");
                 }
-            } elseif ($param == "lib_settings_panel") {
+            } elseif ($param == "owt_lib_settings_panel") {
 
                 $currency_code = isset($_REQUEST['txt_currency']) ? sanitize_text_field($_REQUEST['txt_currency']) : -1;
                 $late_fine = isset($_REQUEST['txt_amount']) ? sanitize_text_field($_REQUEST['txt_amount']) : "";
@@ -1602,9 +1602,9 @@ $total_count_staffs = $wpdb->get_results(
                     $this->json(0, "Please select currency code");
                 }
 
-                update_option("lib_book_late_fine", $late_fine);
-                update_option("lib_currency_code", $currency_code);
-                update_option("lib_country_setup", $txt_country);
+                update_option("owt_lib_book_late_fine", $late_fine);
+                update_option("owt_lib_currency_code", $currency_code);
+                update_option("owt_lib_country_setup", $txt_country);
 
                 $this->json(1, "Settings saved successfully");
             }
@@ -1620,23 +1620,23 @@ $total_count_staffs = $wpdb->get_results(
         die;
     }
 
-    public function include_template_file($template, $lib_params = array()) {
+    public function owt_library_include_template_file($template, $lib_params = array()) {
 
         ob_start();
         $params = $lib_params;
-        include_once PLUGIN_DIR_PATH . 'admin/views/' . $template . ".php";
+        include_once OWT_LIBRARY_PLUGIN_DIR_PATH . 'admin/views/' . $template . ".php";
         $template = ob_get_contents();
         ob_end_clean();
 
         echo $template;
     }
 
-    public function get_category_info($category_id) {
+    public function owt_library_get_category_info($category_id) {
 
         global $wpdb;
         $category_info = $wpdb->get_row(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_category() . " WHERE id = %d AND status = %d", $category_id, 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_category() . " WHERE id = %d AND status = %d", $category_id, 1
                 )
         );
         if (!empty($category_info)) {
@@ -1645,12 +1645,12 @@ $total_count_staffs = $wpdb->get_results(
         return '';
     }
 
-    public function get_branch_info($branch_id) {
+    public function owt_library_get_branch_info($branch_id) {
 
         global $wpdb;
         $branch_info = $wpdb->get_row(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_branch() . " WHERE id = %d AND status = %d", $branch_id, 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_branch() . " WHERE id = %d AND status = %d", $branch_id, 1
                 )
         );
         if (!empty($branch_info)) {
@@ -1659,12 +1659,12 @@ $total_count_staffs = $wpdb->get_results(
         return '';
     }
 
-    public function get_book_info($book_id) {
+    public function owt_library_get_book_info($book_id) {
 
         global $wpdb;
         $book_info = $wpdb->get_row(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_books() . " WHERE id = %d AND status = %d", $book_id, 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_books() . " WHERE id = %d AND status = %d", $book_id, 1
                 )
         );
         if (!empty($book_info)) {
@@ -1673,12 +1673,12 @@ $total_count_staffs = $wpdb->get_results(
         return '';
     }
 
-    public function get_usertype_info($user_type_id) {
+    public function owt_library_get_usertype_info($user_type_id) {
 
         global $wpdb;
         $user_type_info = $wpdb->get_row(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_user_type() . " WHERE id = %d AND status = %d", $user_type_id, 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_user_type() . " WHERE id = %d AND status = %d", $user_type_id, 1
                 )
         );
         if (!empty($user_type_info)) {
@@ -1687,12 +1687,12 @@ $total_count_staffs = $wpdb->get_results(
         return '';
     }
 
-    public function get_staff_info($user_id) {
+    public function owt_library_get_staff_info($user_id) {
 
         global $wpdb;
         $user_info = $wpdb->get_row(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_teachers_staff() . " WHERE id = %d AND status = %d", $user_id, 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_teachers_staff() . " WHERE id = %d AND status = %d", $user_id, 1
                 )
         );
         if (!empty($user_info)) {
@@ -1705,11 +1705,11 @@ $total_count_staffs = $wpdb->get_results(
      * Checking book count
      */
 
-    public function free_version_rules() {
+    public function owt_library_free_version_rules() {
         global $wpdb;
         $count_books = $wpdb->get_var(
                 $wpdb->prepare(
-                        "SELECT count(id) from " . $this->table_activator->tbl_books() . " WHERE status = %d", 1
+                        "SELECT count(id) from " . $this->table_activator->owt_library_tbl_books() . " WHERE status = %d", 1
                 )
         );
 
@@ -1722,12 +1722,12 @@ $total_count_staffs = $wpdb->get_results(
         }
     }
 
-    public function get_student_info($student_id) {
+    public function owt_library_get_student_info($student_id) {
 
         global $wpdb;
         $student_info = $wpdb->get_row(
                 $wpdb->prepare(
-                        "SELECT * from " . $this->table_activator->tbl_students() . " WHERE id = %d AND status = %d", $student_id, 1
+                        "SELECT * from " . $this->table_activator->owt_library_tbl_students() . " WHERE id = %d AND status = %d", $student_id, 1
                 )
         );
         if (!empty($student_info)) {
@@ -1736,8 +1736,8 @@ $total_count_staffs = $wpdb->get_results(
         return '';
     }
 
-    public function wpsettings_link($links) {
-        $lib_settings_link = admin_url('admin.php?page=lib-manage-settings');
+    public function wpowt_library_settings_link($links) {
+        $lib_settings_link = admin_url('admin.php?page=owt-lib-manage-settings');
         $settings_link = '<a href="' . $lib_settings_link . '">' . __('Settings') . '</a>';
         array_push($links, $settings_link);
         return $links;
