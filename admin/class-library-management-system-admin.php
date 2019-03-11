@@ -91,6 +91,8 @@ class Library_Management_System_Admin {
             wp_enqueue_style("owt-lib-toastr", OWT_LIBRARY_PLUGIN_URL . 'assets/css/toastr.min.css', array(), $this->version, 'all');
             wp_enqueue_style("owt-custom-css", OWT_LIBRARY_PLUGIN_URL . 'admin/css/library-management-system-admin.css', array(), $this->version, 'all');
             wp_enqueue_style("owt-lib-global", OWT_LIBRARY_PLUGIN_URL . 'assets/css/owt-lib-global.css', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-sb-admin-2", OWT_LIBRARY_PLUGIN_URL . 'assets/css/sb-admin-2.css', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-fontawesome-all", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/fontawesome-free/css/all.min.css', array(), $this->version, 'all');
         }
     }
 
@@ -125,6 +127,13 @@ class Library_Management_System_Admin {
             wp_enqueue_script("validate", OWT_LIBRARY_PLUGIN_URL . 'assets/js/jquery.validate.min.js', array('jquery'), $this->version, true);
             wp_enqueue_script("sweatalert", OWT_LIBRARY_PLUGIN_URL . 'assets/js/sweetalert.min.js', array('jquery'), $this->version, true);
             wp_enqueue_script("toastr", OWT_LIBRARY_PLUGIN_URL . 'assets/js/toastr.min.js', array('jquery'), $this->version, true);
+            wp_enqueue_script("sb-admin-2", OWT_LIBRARY_PLUGIN_URL . 'assets/js/sb-admin-2.js', array(), $this->version, true);
+            wp_enqueue_script("chart-area-demo", OWT_LIBRARY_PLUGIN_URL . 'assets/js/demo/chart-area-demo.js', array(), $this->version, true);
+            wp_enqueue_script("chart-bar-demo", OWT_LIBRARY_PLUGIN_URL . 'assets/js/demo/chart-bar-demo.js', array(), $this->version, true);
+            wp_enqueue_script("chart-pie-demo", OWT_LIBRARY_PLUGIN_URL . 'assets/js/demo/chart-pie-demo.js', array(), $this->version, true);
+            wp_enqueue_script("datatables-demo", OWT_LIBRARY_PLUGIN_URL . 'assets/js/demo/datatables-demo.js', array(), $this->version, true);
+            wp_enqueue_script("bootstrap-bundle", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/js/bootstrap.bundle.js', array(), $this->version, true);
+            wp_enqueue_script("jquery-easing", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/jquery-easing/jquery.easing.min.js', array(), $this->version, true);
             wp_enqueue_script($this->plugin_name, OWT_LIBRARY_PLUGIN_URL . 'admin/js/library-management-system-admin.js', array('jquery'), $this->version, true);
             wp_localize_script($this->plugin_name, "owt_lib", array(
                 "ajaxurl" => admin_url("admin-ajax.php"),
