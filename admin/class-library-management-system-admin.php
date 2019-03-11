@@ -122,7 +122,7 @@ class Library_Management_System_Admin {
         );
         if (in_array($page, $plugin_valid_pages)) {
             // javascript files
-            wp_enqueue_script("bootstrap", OWT_LIBRARY_PLUGIN_URL . 'assets/js/bootstrap.min.js', array('jquery'), $this->version, true);
+            // wp_enqueue_script("bootstrap", OWT_LIBRARY_PLUGIN_URL . 'assets/js/bootstrap.min.js', array('jquery'), $this->version, true);
             wp_enqueue_script("datatable", OWT_LIBRARY_PLUGIN_URL . 'assets/js/jquery.dataTables.min.js', array('jquery'), $this->version, true);
             wp_enqueue_script("validate", OWT_LIBRARY_PLUGIN_URL . 'assets/js/jquery.validate.min.js', array('jquery'), $this->version, true);
             wp_enqueue_script("sweatalert", OWT_LIBRARY_PLUGIN_URL . 'assets/js/sweetalert.min.js', array('jquery'), $this->version, true);
