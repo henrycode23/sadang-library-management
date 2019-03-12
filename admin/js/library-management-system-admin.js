@@ -3,6 +3,7 @@ jQuery(function () {
     var owt_lib_prefix = owt_lib.owt_lib_prefix;
 
     jQuery('#owt-tbl-book-list').DataTable();
+    // jQuery('#dataTable').DataTable();
 
     // upload profile image from here
     jQuery("#btnUploadImage").on("click", function () {
