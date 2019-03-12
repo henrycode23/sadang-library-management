@@ -83,16 +83,78 @@ class Library_Management_System_Admin {
         );
         if (in_array($page, $plugin_valid_pages)) {
             //stylesheet files
-            wp_enqueue_style("owt-lib-bootstrap", OWT_LIBRARY_PLUGIN_URL . 'assets/css/bootstrap.min.css', array(), $this->version, 'all');
+            // wp_enqueue_style("owt-lib-bootstrap", OWT_LIBRARY_PLUGIN_URL . 'assets/css/bootstrap.min.css', array(), $this->version, 'all');
             wp_enqueue_style("owt-lib-font-icons", OWT_LIBRARY_PLUGIN_URL . 'assets/fonts/material-icons.css', array(), $this->version, 'all');
             wp_enqueue_style("owt-lib-materialsdesignicons", OWT_LIBRARY_PLUGIN_URL . 'assets/css/materialdesignicons.css', array(), $this->version, 'all');
             wp_enqueue_style("owt-lib-datatable", OWT_LIBRARY_PLUGIN_URL . 'assets/css/jquery.dataTables.min.css', array(), $this->version, 'all');
             wp_enqueue_style("owt-lib-sweetalert", OWT_LIBRARY_PLUGIN_URL . 'assets/css/sweetalert.css', array(), $this->version, 'all');
             wp_enqueue_style("owt-lib-toastr", OWT_LIBRARY_PLUGIN_URL . 'assets/css/toastr.min.css', array(), $this->version, 'all');
-            wp_enqueue_style("owt-custom-css", OWT_LIBRARY_PLUGIN_URL . 'admin/css/library-management-system-admin.css', array(), $this->version, 'all');
-            wp_enqueue_style("owt-lib-global", OWT_LIBRARY_PLUGIN_URL . 'assets/css/owt-lib-global.css', array(), $this->version, 'all');
+            // wp_enqueue_style("owt-custom-css", OWT_LIBRARY_PLUGIN_URL . 'admin/css/library-management-system-admin.css', array(), $this->version, 'all');
+            // wp_enqueue_style("owt-lib-global", OWT_LIBRARY_PLUGIN_URL . 'assets/css/owt-lib-global.css', array(), $this->version, 'all');
+            
             wp_enqueue_style("owt-lib-sb-admin-2", OWT_LIBRARY_PLUGIN_URL . 'assets/css/sb-admin-2.css', array(), $this->version, 'all');
             wp_enqueue_style("owt-lib-fontawesome-all", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/fontawesome-free/css/all.min.css', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-buttons", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/_buttons.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-dropdowns", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/_dropdowns.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-error", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/_error.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-footer", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/_footer.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-global", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/_global.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-mixins", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/_mixins.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-utilities", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/_utilities.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-variables", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/_variables.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-sb-admin-2", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/sb-admin-2.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-navs-global", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/navs/global.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-navs-sidebar", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/navs/sidebar.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-navs-topbar", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/navs/topbar.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-utilities-animation", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/utilities/_animation.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-utilities-background", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/utilities/_background.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-utilities-display", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/utilities/_display.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-utilities-progress", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/utilities/_progress.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-utilities-rotate", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/utilities/_rotate.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-utilities-text", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/utilities/_text.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-scss-utilities-display", OWT_LIBRARY_PLUGIN_URL . 'assets/scss/utilities/_display.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-alert", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_alert.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-badge", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_badge.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-breadcrumb", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_breadcrumb.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-button-group", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_button-group.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-buttons", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_buttons.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-card", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_card.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-close", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_close.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-code", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_code.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-custom-forms", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_custom-forms.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-dropdown", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_dropdown.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-forms", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_forms.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-functions", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_functions.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-grid", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_grid.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-images", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_images.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-input-group", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_input-group.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-jumbotron", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_jumbotron.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-list-group", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_list-group.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-media", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_media.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-mixins", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_mixins.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-modal", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_modal.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-nav", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_nav.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-navbar", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_navbar.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-pagination", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_pagination.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-popover", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_popover.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-print", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_print.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-progress", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_progress.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-reboot", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_reboot.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-root", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_root.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-spinners", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_spinners.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-tables", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_tables.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-toasts", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_toasts.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-tooltip", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_tooltip.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-transitions", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_transitions.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-type", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_type.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-utilities", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_utilities.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-navbar", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_navbar.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-variables", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/_variables.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-bootstrap", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/bootstrap.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-bootstrap-grid", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/bootstrap-grid.scss', array(), $this->version, 'all');
+            wp_enqueue_style("owt-lib-vendor-bootstrap-scss-bootstrap-reboot", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/scss/bootstrap-reboot.scss', array(), $this->version, 'all');
+
+
         }
     }
 
@@ -123,16 +185,18 @@ class Library_Management_System_Admin {
         if (in_array($page, $plugin_valid_pages)) {
             // javascript files
             // wp_enqueue_script("bootstrap", OWT_LIBRARY_PLUGIN_URL . 'assets/js/bootstrap.min.js', array('jquery'), $this->version, true);
-            wp_enqueue_script("datatable", OWT_LIBRARY_PLUGIN_URL . 'assets/js/jquery.dataTables.min.js', array('jquery'), $this->version, true);
-            wp_enqueue_script("validate", OWT_LIBRARY_PLUGIN_URL . 'assets/js/jquery.validate.min.js', array('jquery'), $this->version, true);
-            wp_enqueue_script("sweatalert", OWT_LIBRARY_PLUGIN_URL . 'assets/js/sweetalert.min.js', array('jquery'), $this->version, true);
-            wp_enqueue_script("toastr", OWT_LIBRARY_PLUGIN_URL . 'assets/js/toastr.min.js', array('jquery'), $this->version, true);
+            // wp_enqueue_script("datatable", OWT_LIBRARY_PLUGIN_URL . 'assets/js/jquery.dataTables.min.js', array('jquery'), $this->version, true);
+            // wp_enqueue_script("validate", OWT_LIBRARY_PLUGIN_URL . 'assets/js/jquery.validate.min.js', array('jquery'), $this->version, true);
+            // wp_enqueue_script("sweatalert", OWT_LIBRARY_PLUGIN_URL . 'assets/js/sweetalert.min.js', array('jquery'), $this->version, true);
+            // wp_enqueue_script("toastr", OWT_LIBRARY_PLUGIN_URL . 'assets/js/toastr.min.js', array('jquery'), $this->version, true);
+           
             wp_enqueue_script("sb-admin-2", OWT_LIBRARY_PLUGIN_URL . 'assets/js/sb-admin-2.js', array(), $this->version, true);
             wp_enqueue_script("chart-area-demo", OWT_LIBRARY_PLUGIN_URL . 'assets/js/demo/chart-area-demo.js', array(), $this->version, true);
             wp_enqueue_script("chart-bar-demo", OWT_LIBRARY_PLUGIN_URL . 'assets/js/demo/chart-bar-demo.js', array(), $this->version, true);
             wp_enqueue_script("chart-pie-demo", OWT_LIBRARY_PLUGIN_URL . 'assets/js/demo/chart-pie-demo.js', array(), $this->version, true);
             wp_enqueue_script("datatables-demo", OWT_LIBRARY_PLUGIN_URL . 'assets/js/demo/datatables-demo.js', array(), $this->version, true);
             wp_enqueue_script("bootstrap-bundle", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/js/bootstrap.bundle.js', array(), $this->version, true);
+            wp_enqueue_script("bootstrap", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/bootstrap/js/bootstrap.min.js', array(), $this->version, true);
             wp_enqueue_script("jquery-easing", OWT_LIBRARY_PLUGIN_URL . 'assets/vendor/jquery-easing/jquery.easing.min.js', array(), $this->version, true);
             wp_enqueue_script($this->plugin_name, OWT_LIBRARY_PLUGIN_URL . 'admin/js/library-management-system-admin.js', array('jquery'), $this->version, true);
             wp_localize_script($this->plugin_name, "owt_lib", array(
